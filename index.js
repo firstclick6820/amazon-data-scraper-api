@@ -29,9 +29,9 @@ app.get('/', (req, res)=> {
 // Get Product detail
 app.get('/products/:productId', async (req, res)=> {
     const {productId} = req.params;
-    const {api_key} = req.query;
+    const {apiKey} = req.query;
 
-        const response = await request(`${generateScrapURL(api_key)}&url=https://www.amazon.com/dp/${productId}`)
+        const response = await request(`${generateScrapURL(apiKey)}&url=https://www.amazon.com/dp/${productId}`)
         res.json(JSON.parse(response))
     try {
 
@@ -49,8 +49,8 @@ app.get('/products/:productId', async (req, res)=> {
 // Get Product Reviews
 app.get('/products/:productId/reviews', async (req, res)=> {
     const {productId} = req.params;
-    const {api_key} = req.query;
-        const response = await request(`${generateScrapURL(api_key)}&url=https://www.amazon.com/product-reviews/${productId}`)
+    const {apiKey} = req.query;
+        const response = await request(`${generateScrapURL(apiKey)}&url=https://www.amazon.com/product-reviews/${productId}`)
         res.json(JSON.parse(response))
     try {
 
@@ -68,8 +68,8 @@ app.get('/products/:productId/reviews', async (req, res)=> {
 // Get Product Offers
 app.get('/products/:productId/offers', async (req, res)=> {
     const {productId} = req.params;
-    const {api_key} = req.query;
-        const response = await request(`${generateScrapURL(api_key)}&url=https://www.amazon.com/gp/offer-listing/${productId}`)
+    const {apiKey} = req.query;
+        const response = await request(`${generateScrapURL(apiKey)}&url=https://www.amazon.com/gp/offer-listing/${productId}`)
         res.json(JSON.parse(response))
     try {
 
@@ -87,8 +87,8 @@ app.get('/products/:productId/offers', async (req, res)=> {
 // Serach For the Product
 app.get('/search/:searchQuery', async (req, res)=> {
     const {searchQuery} = req.params;
-    const {api_key} = req.query;
-        const response = await request(`${generateScrapURL(api_key)}&url=https://www.amazon.com/s?k=${searchQuery}`)
+    const {apiKey} = req.query;
+        const response = await request(`${generateScrapURL(apiKey)}&url=https://www.amazon.com/s?k=${searchQuery}`)
         res.json(JSON.parse(response))
     try {
 
