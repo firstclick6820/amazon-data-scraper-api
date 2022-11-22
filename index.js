@@ -6,13 +6,13 @@ const request = require('request-promise');
 // Initialize the app
 const app = express()
 // Define the PORT
-const PORT = process.env.PORT || 3000
+const PORT = 3000
 
 
 
 const generateScrapURL = (apiKey) =>  `http://api.scraperapi.com?api_key=${apiKey}&autoparse=true`;
 
-console.log(BASE_URL)
+
 // specify the app to use json format
 app.use(express.json());
 
@@ -106,6 +106,6 @@ app.get('/search/:searchQuery', async (req, res)=> {
 
 
 // Running The Server
-app.listen(PORT, () => 
-    console.log(`Server is running on PORT ${PORT}`)
-);
+app.listen(process.env.PORT || PORT, 
+	() => console.log(`Server is running on PORT ${PORT}...`));
+
