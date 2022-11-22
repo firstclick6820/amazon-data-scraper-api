@@ -106,6 +106,6 @@ app.get('/search/:searchQuery', async (req, res)=> {
 
 
 // Running The Server
-app.listen(PORT, () => {
+app.listen(PORT, () => 
     console.log(`Server is running on PORT ${PORT}`)
-});
+);
