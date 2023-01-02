@@ -1,13 +1,15 @@
 // import modules
 const express = require('express');
 const request = require('request-promise');
+require('dotenv').config();
 
 
 // Initialize the app
 const app = express()
 // Define the PORT
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
+const apiKey = process.env.API_KEY
 
 
 const generateScrapURL = (apiKey) =>  `http://api.scraperapi.com?api_key=${apiKey}&autoparse=true`;
@@ -29,7 +31,7 @@ app.get('/', (req, res)=> {
 // Get Product detail
 app.get('/products/:productId', async (req, res)=> {
     const {productId} = req.params;
-    const {apiKey} = req.query;
+    // const {apiKey} = req.query;
 
         const response = await request(`${generateScrapURL(apiKey)}&url=https://www.amazon.com/dp/${productId}`)
         res.json(JSON.parse(response))
@@ -49,7 +51,7 @@ app.get('/products/:productId', async (req, res)=> {
 // Get Product Reviews
 app.get('/products/:productId/reviews', async (req, res)=> {
     const {productId} = req.params;
-    const {apiKey} = req.query;
+    // const {apiKey} = req.query;
         const response = await request(`${generateScrapURL(apiKey)}&url=https://www.amazon.com/product-reviews/${productId}`)
         res.json(JSON.parse(response))
     try {
@@ -68,7 +70,7 @@ app.get('/products/:productId/reviews', async (req, res)=> {
 // Get Product Offers
 app.get('/products/:productId/offers', async (req, res)=> {
     const {productId} = req.params;
-    const {apiKey} = req.query;
+    // const {apiKey} = req.query;
         const response = await request(`${generateScrapURL(apiKey)}&url=https://www.amazon.com/gp/offer-listing/${productId}`)
         res.json(JSON.parse(response))
     try {
